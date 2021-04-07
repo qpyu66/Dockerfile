@@ -1,0 +1,6 @@
+
+>> dockerfile 있는 경로에 들어가서 실행
+docker image build . -t bsh-server:v10
+
+>> docker run
+docker run -itd --name bsh-server10 --gpus all --restart always -p 2088:8888 -p 2089:22 -v bsh-server-volume:/home/workspace bsh-server:v10
