@@ -1,0 +1,50 @@
+# root로 로그인
+su 
+
+# docker image 목록 확인
+docker images
+
+# "실행 중"인 container 중 목록 확인
+docker ps 
+
+# "실행/종료/일시정지"된 모든 container 확인
+docker ps -a
+
+# container 리소스 사용량 확인
+docker stats
+
+# container 상세정보 확인
+docker inspect [CONTAINER NAME OR ID]
+
+# 시작 container
+docker start [CONTAINER NAME OR ID]
+
+# container 접속
+
+docker exec -it [CONTAINER NAME OR ID] bash
+
+# jupyter lab server 이미지로 컨테이너 생성
+# jupyterlab:0.6-tf2.3-gpu : nvidia/cuda 를 커스텀한 이미지
+# -p : jupyter 포트 8888 사용
+# -e NVIDIA_VISIBLE_DEVICES : GPU 할당 지정
+# -v : 개인 볼륨과 공유 볼륨 생성
+# --cpuset-cpus : CPU 할당 지정
+
+# nvidia-docker : 구버전 gpu 사용할 때
+# --cpuset-cpus="0-15"  사용하고자 하는 cpu 번호 설정
+# -v [도커 외부 경로]:[도커 내부 경로]
+# [EXTERNAL PORT] 외부에서 접근할 포트 설정(포트포워딩)
+nvidia-docker run --rm -d --name [CONTAINTER NAME] -p [EXTERNAL PORT]:8888 -v /home/docker-temp/share:/home/share -v /home/docker-temp/[CONTAINER_NAME]:/home/workspace -e NVIDIA_VISIBLE_DEVICES="all" --cpuset-cpus="0-15" jupyterlab:0.6-tf2.3-gpu
+
+
+
+# --gpus all : 최신버전 gpu 사용할 때
+# -v [CONTAINTER NAME]-volume:/home/workspace  볼륨을  [CONTAINTER NAME]-volume 으로 설정한 이유는 볼륨 장소 찾기 쉽게 하기 위해서
+docker run -it -d --name [CONTAINTER NAME] --gpus all --restart always  -v  /home/docker-temp/share:/home/share  -v /usr/share/zoneinfo/Asia/Seoul:/etc/timezone:ro -e LC_ALL=C.UTF-8 -e LANGUAGE=ko -p [EXTERNAL PORT]:8888 -p [EXTERNAL PORT]:22 -v [CONTAINTER NAME]-volume:/home/workspace  jupyterlab:0.6-tf2.3-gpu
+
+ 
+ 
+
+# container 안에서 jupyter lab 실행 명령어
+jupyter lab --ip='*' --allow-root
+
