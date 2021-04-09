@@ -1,0 +1,9 @@
+1. 호스트에서 컨테이너로 파일 전송하는 방법
+
+docker cp /path/abc.txt container_name:/path/abc.txt
+
+ 
+
+2. 컨테이너에서 호스트로 파일 전송하는 방법 
+
+docker cp container_name:/path/abc.txt /path/abc.txt
