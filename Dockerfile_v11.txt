@@ -1,0 +1,17 @@
+# root계정말고 일반 유저(user) 추가 및 컨테이너에서 일반 유저로 실행시키고자 할 때 
+FROM centos:latest
+
+RUN apt-get update
+RUN adduser user1
+
+USER user1
+
+
+
+
+
+
+
+
+
+

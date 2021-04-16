@@ -11,3 +11,6 @@ docker run -itd --name bsh-server10 --gpus all --restart always -p 2088:8888 -p 
 docker exec -it bsh-server10 bash
 
 
+
+>> docker run 일반 계정으로 실행(-u)  
+docker run -itd --name bsh-server11 -u user1 bsh-server:v11

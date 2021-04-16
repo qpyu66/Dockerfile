@@ -7,3 +7,10 @@ docker cp /path/abc.txt container_name:/path/abc.txt
 2. 컨테이너에서 호스트로 파일 전송하는 방법 
 
 docker cp container_name:/path/abc.txt /path/abc.txt
+
+
+
+ex) download안에 있는 폴더 전체를 도커 안에다가 복사하고싶을 때
+다음과 같은 명령어를 사용하면 컨테이너 안에 /home/workspace/docker/ 아래에 download 폴더가 생기고 download의 내용이 복사된다.
+
+docker cp /home/bsh/download/ container_name:/home/workspace/docker/
