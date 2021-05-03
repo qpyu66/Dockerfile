@@ -1,0 +1,18 @@
+#10
+FROM tensorflow/tensorflow:2.2.0-gpu
+
+RUN apt-get -y update
+RUN apt-get -y install python3-pip
+RUN pip3 install --upgrade pip
+RUN pip install jupyter
+RUN pip install jupyterlab
+
+EXPOSE 8888 22
+RUN mkdir /workspace
+WORKDIR /workspace
+
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+
+
+
+#jupyter 비밀번호설정 찾아보기

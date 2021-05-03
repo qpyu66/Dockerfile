@@ -1,0 +1,17 @@
+>> docker에서 jenkins 이미지 pull
+docker pull jenkins/jenkins:lts
+
+
+>> jenkins 이미지로 컨테이너 만들기
+docker run -itd --name jenkins1 --restart always -p 18080:8080 -v jenkins-server-volume:/var/jenkins_home jenkins/jenkins:lts
+
+
+>> jenkins1 이미지에 접근하지 않고 패스워드 확인가능
+docker logs jenkins1
+
+
+>> jenkins1 이미지 접속
+docker exec -it jenkins1 bash
+
+>> jenkins1 이미지 내부에서 패스워드 경로 (cat 붙여서 pw확인하기)
+ /var/jenkins_home/secrets/initialAdminPassword
