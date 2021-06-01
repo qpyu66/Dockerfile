@@ -1,0 +1,10 @@
+
+# 다른서버로 폴더 복사
+#파일 있는 서버 -> 이동할 서버
+scp -r /home/docker-temp/bsh-server/docker root@192.168.xx.xx:/home/bsh/docker-temp/
+
+
+#다른서버에서 가져오기
+#가져올 서버 / 현재 서버
+scp -r root@idcgpu.xx.org:/home/docker-temp/bsh-server/docker /home/bsh/docker-temp/ 
+
