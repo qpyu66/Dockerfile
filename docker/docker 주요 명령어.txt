@@ -39,6 +39,7 @@ nvidia-docker run --rm -d --name [CONTAINTER NAME] -p [EXTERNAL PORT]:8888 -v /h
 
 
 # --gpus all : 최신버전 gpu 사용할 때
+# --gpus '"device=0,1,2"' : gpu 사용하고자 하는 번호 설정
 # -v [CONTAINTER NAME]-volume:/home/workspace  볼륨을  [CONTAINTER NAME]-volume 으로 설정한 이유는 볼륨 장소 찾기 쉽게 하기 위해서
 docker run -it -d --name [CONTAINTER NAME] --gpus all --restart always  -v  /home/docker-temp/share:/home/share  -v /usr/share/zoneinfo/Asia/Seoul:/etc/timezone:ro -e LC_ALL=C.UTF-8 -e LANGUAGE=ko -p [EXTERNAL PORT]:8888 -p [EXTERNAL PORT]:22 -v [CONTAINTER NAME]-volume:/home/workspace  jupyterlab:0.6-tf2.3-gpu
 
@@ -47,4 +48,14 @@ docker run -it -d --name [CONTAINTER NAME] --gpus all --restart always  -v  /hom
 
 # container 안에서 jupyter lab 실행 명령어
 jupyter lab --ip='*' --allow-root
+
+
+
+#docker container PID 확인
+pgrep containerd-shim -a | grep 컨테이너ID | awk '{print $1}'
+
+
+
+
+
 
