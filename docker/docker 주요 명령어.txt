@@ -10,8 +10,9 @@ docker ps
 # "실행/종료/일시정지"된 모든 container 확인
 docker ps -a
 
-# container 리소스 사용량 확인
-docker stats
+# container 리소스 사용량 확인(cpu, ram 사용량 확인)
+docker stats 컨테이너 이름
+
 
 # container 상세정보 확인
 docker inspect [CONTAINER NAME OR ID]
