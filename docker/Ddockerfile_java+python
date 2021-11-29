@@ -1,0 +1,21 @@
+FROM ubuntu:18.04
+
+RUN apt-get update && apt-get install -y g++ default-jdk
+RUN apt install openjdk-8-jdk -y && apt install -y default-jre 
+RUN apt install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+# 엔터
+RUN apt install -y python3.7 && apt-get install -y python3.7-venv
+# apt-get install -y python3-pip python3-dev
+RUN apt-get install -y python-pip python-dev
+
+# 파이썬 빌드를 위한 설치
+RUN apt install -y build-essential zlib1g-dev libncurses5-dev \
+       libgdbm-dev libnss3-dev libssl-dev libreadline-dev \
+       libffi-dev wget
+RUN apt-get install -y curl git
+RUN apt install -y python3-venv
+RUN pip install requests
+RUN apt-get install -y libpq-dev
+RUN apt-get install -y tomcat8
+RUN apt-get install -y git openssh-server
